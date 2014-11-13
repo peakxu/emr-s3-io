@@ -74,7 +74,7 @@ public class S3ObjectWritableTest {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			fail("Exeception while writing data to out stream.");
+			fail("Exception while writing data to out stream.");
 		}
 	}
 }

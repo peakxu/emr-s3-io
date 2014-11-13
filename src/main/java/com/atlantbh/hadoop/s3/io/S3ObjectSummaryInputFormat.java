@@ -3,9 +3,7 @@ package com.atlantbh.hadoop.s3.io;
 import java.io.IOException;
 
 import org.apache.hadoop.io.Text;
-import org.apache.hadoop.mapreduce.InputSplit;
-import org.apache.hadoop.mapreduce.RecordReader;
-import org.apache.hadoop.mapreduce.TaskAttemptContext;
+import org.apache.hadoop.mapred.*;
 
 /**
  * S3 object summary input format
@@ -20,9 +18,7 @@ public class S3ObjectSummaryInputFormat extends S3InputFormat<Text, S3ObjectSumm
 	}
 
 	@Override
-	public RecordReader<Text, S3ObjectSummaryWritable> createRecordReader(InputSplit split,
-			TaskAttemptContext context) throws IOException,
-			InterruptedException {
+	public RecordReader<Text, S3ObjectSummaryWritable> getRecordReader(InputSplit inputSplit, JobConf jobConf, Reporter reporter) throws IOException {
 		return new S3ObjectSummaryRecordReader();
 	}
 }

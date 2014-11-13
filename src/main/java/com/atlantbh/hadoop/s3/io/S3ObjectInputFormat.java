@@ -2,9 +2,8 @@ package com.atlantbh.hadoop.s3.io;
 
 import java.io.IOException;
 
-import org.apache.hadoop.mapreduce.InputSplit;
-import org.apache.hadoop.mapreduce.RecordReader;
-import org.apache.hadoop.mapreduce.TaskAttemptContext;
+import org.apache.hadoop.mapred.JobConf;
+import org.apache.hadoop.mapred.Reporter;
 
 /**
  * S3 object input format. The purpose of this input format class is to read keys from Amazon S3 service 
@@ -20,10 +19,7 @@ public class S3ObjectInputFormat extends S3InputFormat<S3ObjectSummaryWritable, 
 	}
 
 	@Override
-	public RecordReader<S3ObjectSummaryWritable, S3ObjectWritable> createRecordReader(InputSplit split,
-			TaskAttemptContext context) throws IOException,
-			InterruptedException {
-		
+	public org.apache.hadoop.mapred.RecordReader<S3ObjectSummaryWritable, S3ObjectWritable> getRecordReader(org.apache.hadoop.mapred.InputSplit inputSplit, JobConf jobConf, Reporter reporter) throws IOException {
 		return new S3ObjectRecordReader();
 	}
 }

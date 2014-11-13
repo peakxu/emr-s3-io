@@ -7,7 +7,7 @@ import java.io.IOException;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableUtils;
-import org.apache.hadoop.mapreduce.InputSplit;
+import org.apache.hadoop.mapred.InputSplit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -22,7 +22,7 @@ import org.slf4j.LoggerFactory;
  * @author seljaz
  *
  */
-public class S3InputSplit extends InputSplit implements Writable {
+public class S3InputSplit implements InputSplit, Writable {
 	
 	static Logger LOG = LoggerFactory.getLogger(S3InputSplit.class);
 
@@ -76,12 +76,12 @@ public class S3InputSplit extends InputSplit implements Writable {
 	}
 
 	@Override
-	public long getLength() throws IOException, InterruptedException {
+	public long getLength() throws IOException {
 		return size;
 	}
 
 	@Override
-	public String[] getLocations() throws IOException, InterruptedException {
+	public String[] getLocations() throws IOException {
 			return new String[]{};
 	}
 
